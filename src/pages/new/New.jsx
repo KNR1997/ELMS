@@ -60,6 +60,13 @@ const New = ({ inputs, title }) => {
     setData({ ...data, [id]: value });
   };
 
+  const handleRole = (e) => {
+    const id = e.target.id;
+    const value = e.target.value;
+
+    setData({ ...data, [id]: value });
+  };
+
   const handleAdd = async (e) => {
     e.preventDefault();
     try {
@@ -111,6 +118,15 @@ const New = ({ inputs, title }) => {
                 />
               </div>
 
+              <div className="formInput">
+                  <label>Role</label>
+                  <input
+                    type='text'
+                    id='role'
+                    placeholder='Instructor/Student'
+                    onChange={handleRole}
+                  />
+                </div>
               {inputs.map((input) => (
                 <div className="formInput" key={input.id}>
                   <label>{input.label}</label>

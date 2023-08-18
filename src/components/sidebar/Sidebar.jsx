@@ -13,10 +13,14 @@ import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import { Link } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
+import PopupComponent from "../popup/Popup";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const [logoutStatus, setLogoutStatus] = useState(false);
+
+  console.log(logoutStatus);
   return (
     <div className="sidebar">
       <div className="top">
@@ -80,10 +84,12 @@ const Sidebar = () => {
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
-          <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
-          </li>
+            <li onClick={() => {setLogoutStatus(!logoutStatus)}}>
+              <ExitToAppIcon className="icon" />
+              <span>
+                  Logout
+              </span>
+            </li>
         </ul>
       </div>
       <div className="bottom">
@@ -96,6 +102,7 @@ const Sidebar = () => {
           onClick={() => dispatch({ type: "DARK" })}
         ></div>
       </div>
+      {logoutStatus && <PopupComponent />}
     </div>
   );
 };

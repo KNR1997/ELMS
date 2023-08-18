@@ -1,8 +1,8 @@
 export const userColumns = [
-  { field: "id", headerName: "ID", width: 70 },
+  // { field: "id", headerName: "ID", width: 70 },
   {
-    field: "user",
-    headerName: "User",
+    field: "userName",
+    headerName: "UserName",
     width: 230,
     renderCell: (params) => {
       return (
@@ -14,15 +14,14 @@ export const userColumns = [
     },
   },
   {
+    field: "role",
+    headerName: "Role",
+    width: 100,
+  },
+  {
     field: "email",
     headerName: "Email",
     width: 230,
-  },
-
-  {
-    field: "age",
-    headerName: "Age",
-    width: 100,
   },
   {
     field: "status",

@@ -9,10 +9,10 @@ const firebaseConfig = {
   projectId: "e-learning-management-sy-befbb",
   storageBucket: "e-learning-management-sy-befbb.appspot.com",
   messagingSenderId: "1058591115941",
-  appId: "1:1058591115941:web:a70913074fa6ea14759b4c"
+  appId: "1:1058591115941:web:a70913074fa6ea14759b4c",
 };
 
 const app = initializeApp(firebaseConfig);
-export const auth = getAuth()
+export const auth = getAuth();
 export const db = getFirestore(app);
 export const storage = getStorage(app);

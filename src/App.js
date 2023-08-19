@@ -19,6 +19,8 @@ function App() {
     return currentUser ? children : <Navigate to="/login" />;
   };
 
+  console.log(currentUser);
+
   return (
     <div className={darkMode ? "app dark" : "app"}>
       <BrowserRouter>
@@ -85,7 +87,15 @@ function App() {
                 }
               />
             </Route>
-          </Route>
+            <Route
+                path="profile"
+                element={
+                  <RequireAuth>
+                    <Single />
+                  </RequireAuth>
+                }
+              />
+            </Route>
         </Routes>
       </BrowserRouter>
     </div>

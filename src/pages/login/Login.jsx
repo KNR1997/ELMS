@@ -5,6 +5,8 @@ import { signInWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebase";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../context/AuthContext";
+import { collection, query, where } from "firebase/firestore";
+import { db } from "../../firebase";
 
 const Login = () => {
   const [error, setError] = useState(false);
@@ -22,6 +24,8 @@ const Login = () => {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user;
+        const userDetails = query(collection(db,"users"), where("Document ID", "==", user.uid));
+        console.log(userDetails);
         dispatch({type:"LOGIN", payload:user})
         navigate("/")
       })
